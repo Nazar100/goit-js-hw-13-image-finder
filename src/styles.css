@@ -1,0 +1,51 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 900px;
+  background-image: url('https://cdn.slashgear.com/wp-content/uploads/2020/04/star-wars-backgrounds-25-1280x720.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+li {
+  list-style: none;
+}
+.photo-card {
+  border: 2px solid black;
+}
+img {
+  display: block;
+  margin-bottom: 0px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.stats {
+  display: flex;
+}
+i {
+  color: white;
+}
+p {
+  color: cadetblue;
+}
