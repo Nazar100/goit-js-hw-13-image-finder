@@ -1,3 +1,8 @@
+:root {
+  --base-color: #B7C2D2 
+  --hover-color: #084cb1;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -9,8 +14,8 @@ html {
 }
 
 body {
-  height: 900px;
-  background-image: url('https://cdn.slashgear.com/wp-content/uploads/2020/04/star-wars-backgrounds-25-1280x720.jpg');
+  height: 1050px;
+  background-image: url('https://www.pcclean.io/wp-content/uploads/2019/04/327.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,8 +27,13 @@ body {
 li {
   list-style: none;
 }
+
+li:nth-child(-n + 8) {
+  margin-bottom: 30px;
+}
+
 .photo-card {
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 img {
   display: block;
@@ -38,14 +48,116 @@ img {
   margin-right: auto;
   padding: 0;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
-
+img {
+  cursor: pointer;
+}
 .stats {
+  padding-top: 15px;
+  padding-bottom: 15px;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  width: 300px;
+  box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
 }
 i {
-  color: white;
+  margin-right: 5px;
 }
 p {
+  cursor: pointer;
   color: cadetblue;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  transition: color 0.3s ease-in-out;
+}
+p + p {
+  margin-left: 7px;
+}
+
+p:hover {
+  color: blueviolet;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  align-self: center;
+  width: 590px;
+  height: 90px;
+  font-size: 59px;
+}
+button {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 200px;
+  height: 59px;
+  margin-left: 45%;
+  border: 2px solid var(--base-color);
+  font-size: 2rem;
+  cursor: pointer;
+}
+button.active {
+  opacity: 1;
+}
+.text {
+  position: relative;
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--hover-color) 0%,
+    var(--hover-color) 50%,
+    var(--base-color) 50%,
+    var(--base-color) 100%
+  );
+  background-repeat: repeat;
+  background-size: 200%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-position 300ms;
+}
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--base-color);
+  transform-origin: 100% 0;
+  transform: scale3d(0, 1, 1);
+  transition: transform 300ms;
+}
+
+/* button:hover button::before {
+    .text {
+      background-position: 0 0;
+    }
+
+    & {
+      transform-origin: 0 0;
+      transform: scale3d(1, 1, 1);
+    }
+  } */
+button:hover button::before {
+  transform-origin: 0 0;
+  transform: scale3d(1, 1, 1);
+}
+
+button:hover .text {
+  background-position: 0 0;
 }

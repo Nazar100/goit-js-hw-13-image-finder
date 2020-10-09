@@ -1,9 +1,10 @@
 {{#each this}}
 <li>
     <div class="photo-card">
-        <img src="{{webformatURL}}" alt="" width="300" height="200" />
+        <img src="{{webformatURL}}" alt="" width="300" height="200" data-url='{{largeImageURL}}' />
 
         <div class="stats">
+
             <p class="stats-item">
                 <i class="material-icons">thumb_up</i>
                 {{likes}}
