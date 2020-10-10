@@ -1,25 +1,28 @@
 import axios from 'axios';
 import makeMarkup from '../templates/photo-markup.hbs';
-import { debounce } from 'debounce';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+
 
 const listRef = document.querySelector('.gallery');
 const btnRef = document.querySelector('.load-more');
 const inputRef = document.querySelector('input');
 const sumbitRef = document.querySelector('.submit');
+ 
 const password = '18642153-339199c7f42c73c0db1ceac08';
+
 sumbitRef.addEventListener('click', search);
-  
-let page =1;
+
+let page = 1;
 
 function search(e) {
   e.preventDefault();
   listRef.innerHTML = '';
+
+  page = 1;
   makeRequest();
   btnRef.addEventListener('click', loadMorePgs);
 }
-
 
 async function makeRequest() {
   const requestWord = inputRef.value;
@@ -34,18 +37,13 @@ async function makeRequest() {
   }
 }
 
-
-
 function handleRequest(request) {
   const data = request.data.hits;
   const markup = makeMarkup(data);
   listRef.insertAdjacentHTML('beforeend', markup);
 
-  const likeRef = document.querySelector('.like');
-  like (likeRef)
   openModal();
   addClass();
-  return likeRef
 }
 
 function openModal() {
@@ -64,19 +62,17 @@ function addClass() {
   btnRef.classList.add('active');
 }
 
-async function loadMorePgs() {
+async function loadMorePgs(e) {
+e.preventDefault()
   page += 1;
+  scroll();
   makeRequest(page);
-  handleRequest(request);
 }
 
-function like (likeRef) {
-  
-  likeRef.addEventListener('click', addLike)
- return likeRef
-}
+function scroll() {
 
-function addLike (e,likeRef) {
-  console.log(likeRef);
-  // likeRef.textContent++
+  window.scrollTo({
+    top: document.documentElement.offsetHeight,
+    behavior: 'smooth',
+  });
 }

@@ -1,10 +1,6 @@
-:root {
-  --base-color: #b7c2d2;
-  --hover-color: #084cb1;
-}
-
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -27,11 +23,9 @@ body {
 
 li {
   list-style: none;
-}
-
-li:nth-child(-n + 8) {
   margin-bottom: 30px;
 }
+
 img {
   display: block;
   margin-bottom: 0px;
@@ -91,73 +85,47 @@ form {
 input {
   align-self: center;
   width: 590px;
-  height: 90px;
-  font-size: 59px;
+  height: 55px;
+  font-size: 52px;
 }
-.load-more {
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 200px;
-  height: px;
-  margin-left: 45%;
-  border: 2px solid var(--base-color);
-  font-size: 2rem;
+.load-more,
+.submit {
   cursor: pointer;
+  font-size: 20px;
+  background-color: transparent;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
 }
 .load-more.active {
   opacity: 1;
 }
-.text {
-  position: relative;
-  color: transparent;
-  background-image: linear-gradient(
-    90deg,
-    var(--hover-color) 0%,
-    var(--hover-color) 50%,
-    var(--base-color) 50%,
-    var(--base-color) 100%
-  );
-  background-repeat: repeat;
-  background-size: 200%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  transition: background-position 300ms;
+.load-more:hover,
+.submit:hover {
+  color: #000000;
+  background-color: #ffffff;
 }
-.load-more::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--base-color);
-  transform-origin: 100% 0;
-  transform: scale3d(0, 1, 1);
-  transition: transform 300ms;
-}
-
-/* button:hover button::before {
-    .text {
-      background-position: 0 0;
-    }
-
-    & {
-      transform-origin: 0 0;
-      transform: scale3d(1, 1, 1);
-    }
-  } */
-.load-more:hover .load-more::before {
-  transform-origin: 0 0;
-  transform: scale3d(1, 1, 1);
-}
-
-.load-more:hover .text {
-  background-position: 0 0;
-}
-.load-more:focus {
+.load-more:focus,
+.submit:focus {
   outline: none;
+}
+
+.load-more {
+  margin-left: 45%;
+  height: 55px;
+  opacity: 0;
+}
+.submit {
+  margin-left: 20px;
+  height: 55px;
+  width: 115px;
 }
