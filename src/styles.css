@@ -1,5 +1,5 @@
 :root {
-  --base-color: #B7C2D2 
+  --base-color: #b7c2d2;
   --hover-color: #084cb1;
 }
 
@@ -14,10 +14,11 @@ html {
 }
 
 body {
-  height: 1050px;
-  background-image: url('https://www.pcclean.io/wp-content/uploads/2019/04/327.jpg');
+  /* height: 1050px; */
+  background-image: url('https://images.all-free-download.com/images/graphiclarge/astronomy_background_comet_constellation_dark_endless_598901.jpg');
+  /* background-color: darkturquoise; */
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
@@ -30,10 +31,6 @@ li {
 
 li:nth-child(-n + 8) {
   margin-bottom: 30px;
-}
-
-.photo-card {
-  /* border: 2px solid black; */
 }
 img {
   display: block;
@@ -97,20 +94,20 @@ input {
   height: 90px;
   font-size: 59px;
 }
-button {
+.load-more {
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 200px;
-  height: 59px;
+  height: px;
   margin-left: 45%;
   border: 2px solid var(--base-color);
   font-size: 2rem;
   cursor: pointer;
 }
-button.active {
+.load-more.active {
   opacity: 1;
 }
 .text {
@@ -130,7 +127,7 @@ button.active {
   background-clip: text;
   transition: background-position 300ms;
 }
-button::before {
+.load-more::before {
   content: '';
   position: absolute;
   top: 0;
@@ -153,11 +150,14 @@ button::before {
       transform: scale3d(1, 1, 1);
     }
   } */
-button:hover button::before {
+.load-more:hover .load-more::before {
   transform-origin: 0 0;
   transform: scale3d(1, 1, 1);
 }
 
-button:hover .text {
+.load-more:hover .text {
   background-position: 0 0;
+}
+.load-more:focus {
+  outline: none;
 }
