@@ -53,6 +53,7 @@
     "basiclightbox": "^5.0.3",
     "core-js": "^3.6.5",
     "debounce": "^1.2.0",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.6",
+    "infinite-scroll": "^3.0.6"
   }
 }

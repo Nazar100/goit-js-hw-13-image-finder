@@ -21,7 +21,15 @@
       />
       <button type="submit" class="submit">Search</button>
     </form>
-    <ul class="gallery"></ul>
-    <button type="button" class="load-more">Load More>/button>
+    <ul
+      class="gallery"
+      data-infinite-scroll='{ "path": ".pagination__next", "append": ".post", "history": false }'
+    ></ul>
+    <button type="button" class="load-more">Loadimg More...</button>
+    <div class="scroll-up">
+      <svg class="scroll-up__svg">
+        <circle class="scroll-up__circle" cx="50" cy="50" r="40" />
+      </svg>
+    </div>
   </body>
 </html>

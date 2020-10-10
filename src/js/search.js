@@ -3,12 +3,11 @@ import makeMarkup from '../templates/photo-markup.hbs';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
-
 const listRef = document.querySelector('.gallery');
 const btnRef = document.querySelector('.load-more');
 const inputRef = document.querySelector('input');
 const sumbitRef = document.querySelector('.submit');
- 
+
 const password = '18642153-339199c7f42c73c0db1ceac08';
 
 sumbitRef.addEventListener('click', search);
@@ -21,7 +20,7 @@ function search(e) {
 
   page = 1;
   makeRequest();
-  btnRef.addEventListener('click', loadMorePgs);
+  window.addEventListener('scroll', loadMorePgs);
 }
 
 async function makeRequest() {
@@ -62,17 +61,9 @@ function addClass() {
   btnRef.classList.add('active');
 }
 
-async function loadMorePgs(e) {
-e.preventDefault()
-  page += 1;
-  scroll();
-  makeRequest(page);
-}
-
-function scroll() {
-
-  window.scrollTo({
-    top: document.documentElement.offsetHeight,
-    behavior: 'smooth',
-  });
+async function loadMorePgs() {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    page += 1;
+    makeRequest(page);
+  }
 }
