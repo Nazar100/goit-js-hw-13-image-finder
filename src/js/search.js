@@ -15,55 +15,55 @@ sumbitRef.addEventListener('click', search);
 let page = 1;
 
 function search(e) {
-  e.preventDefault();
-  listRef.innerHTML = '';
+    e.preventDefault();
+    listRef.innerHTML = '';
 
-  page = 1;
-  makeRequest();
-  window.addEventListener('scroll', loadMorePgs);
+    page = 1;
+    makeRequest();
+    window.addEventListener('scroll', loadMorePgs);
 }
 
 async function makeRequest() {
-  const requestWord = inputRef.value;
-  try {
-    const request = await axios.get(
-      `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${requestWord}&page=${page}&per_page=12&key=${password}`,
-    );
-    handleRequest(request);
-    return request;
-  } catch (err) {
-    throw error;
-  }
+    const requestWord = inputRef.value;
+    try {
+        const request = await axios.get(
+            `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${requestWord}&page=${page}&per_page=12&key=${password}`,
+        );
+        handleRequest(request);
+        return request;
+    } catch (err) {
+        throw error;
+    }
 }
 
 function handleRequest(request) {
-  const data = request.data.hits;
-  const markup = makeMarkup(data);
-  listRef.insertAdjacentHTML('beforeend', markup);
+    const data = request.data.hits;
+    const markup = makeMarkup(data);
+    listRef.insertAdjacentHTML('beforeend', markup);
 
-  openModal();
-  addClass();
+    openModal();
+    addClass();
 }
 
 function openModal() {
-  listRef.addEventListener('click', createModal);
+    listRef.addEventListener('click', createModal);
 }
 
 function createModal({ target }) {
-  if (target.tagName === 'IMG') {
-    const instance = basicLightbox.create(`
+    if (target.tagName === 'IMG') {
+        const instance = basicLightbox.create(`
 	<div class='modal'> <img src='${target.dataset.url}' width='1200' height ='700'></div>`);
-    instance.show();
-  }
+        instance.show();
+    }
 }
 
 function addClass() {
-  btnRef.classList.add('active');
+    btnRef.classList.add('active');
 }
 
 async function loadMorePgs() {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    page += 1;
-    makeRequest(page);
-  }
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        page += 1;
+        makeRequest(page);
+    }
 }
