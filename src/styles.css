@@ -89,6 +89,9 @@ input {
   font-size: 45px;
   margin: 0px;
 }
+.input:focus {
+  outline: none;
+}
 .load-more,
 .submit {
   cursor: pointer;
