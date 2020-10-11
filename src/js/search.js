@@ -28,7 +28,7 @@ function search(e) {
 
 async function makeRequest() {
     const requestWord = inputRef.value;
-    page = 1;
+  
     try {
         const request = await axios.get(
             `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${requestWord}&page=${page}&per_page=12&key=${password}`,
