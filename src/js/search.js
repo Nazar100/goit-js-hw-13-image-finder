@@ -2,6 +2,7 @@ import axios from 'axios';
 import makeMarkup from '../templates/photo-markup.hbs';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import { debounce } from "debounce";
 
 const listRef = document.querySelector('.gallery');
 const btnRef = document.querySelector('.load-more');
@@ -18,18 +19,22 @@ function search(e) {
     e.preventDefault();
     listRef.innerHTML = '';
 
-    page = 1;
+    
+
     makeRequest();
-    window.addEventListener('scroll', loadMorePgs);
+ 
+    window.addEventListener('scroll', debounce(loadMorePgs,500));
 }
 
 async function makeRequest() {
     const requestWord = inputRef.value;
+    page = 1;
     try {
         const request = await axios.get(
             `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${requestWord}&page=${page}&per_page=12&key=${password}`,
         );
         handleRequest(request);
+           console.log(page)
         return request;
     } catch (err) {
         throw error;
