@@ -66,6 +66,6 @@ function addClass() {
 async function loadMorePgs() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         page += 1;
-        makeRequest(page);
+        makeRequest();
     }
 }
