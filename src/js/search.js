@@ -2,7 +2,7 @@ import axios from 'axios';
 import makeMarkup from '../templates/photo-markup.hbs';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import { debounce } from "debounce";
+import { debounce } from 'debounce';
 
 const listRef = document.querySelector('.gallery');
 const btnRef = document.querySelector('.load-more');
@@ -11,6 +11,7 @@ const sumbitRef = document.querySelector('.submit');
 
 const password = '18642153-339199c7f42c73c0db1ceac08';
 
+let hasEL = false;
 sumbitRef.addEventListener('click', search);
 
 let page = 1;
@@ -18,20 +19,23 @@ let page = 1;
 function search(e) {
     e.preventDefault();
     listRef.innerHTML = '';
-    page=1;
+    page = 1;
     makeRequest();
-    window.addEventListener('scroll', debounce(loadMorePgs,500));
+     console.log(hasEL);
+    if (!hasEL) {
+        window.addEventListener('scroll', debounce(loadMorePgs, 500));
+    }
 }
 
 async function makeRequest() {
     const requestWord = inputRef.value;
-  
+
     try {
         const request = await axios.get(
             `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${requestWord}&page=${page}&per_page=12&key=${password}`,
         );
         handleRequest(request);
-           console.log(page)
+        //    console.log(page)
         return request;
     } catch (err) {
         throw error;
@@ -65,7 +69,9 @@ function addClass() {
 
 async function loadMorePgs() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        hasEL = true;
         page += 1;
         makeRequest();
+        console.log(hasEL);
     }
 }
