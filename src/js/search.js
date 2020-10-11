@@ -11,7 +11,7 @@ const sumbitRef = document.querySelector('.submit');
 
 const password = '18642153-339199c7f42c73c0db1ceac08';
 
-let hasEL = false;
+let hasEventListener = false;
 sumbitRef.addEventListener('click', search);
 
 let page = 1;
@@ -22,7 +22,7 @@ function search(e) {
     page = 1;
     makeRequest();
      console.log(hasEL);
-    if (!hasEL) {
+    if (!hasEventListener) {
         window.addEventListener('scroll', debounce(loadMorePgs, 500));
     }
 }
@@ -69,9 +69,8 @@ function addClass() {
 
 async function loadMorePgs() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        hasEL = true;
+        hasEventListener = true;
         page += 1;
         makeRequest();
-        console.log(hasEL);
     }
 }
