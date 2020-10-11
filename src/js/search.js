@@ -18,11 +18,7 @@ let page = 1;
 function search(e) {
     e.preventDefault();
     listRef.innerHTML = '';
-
-    
-
     makeRequest();
- 
     window.addEventListener('scroll', debounce(loadMorePgs,500));
 }
 
