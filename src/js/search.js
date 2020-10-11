@@ -21,7 +21,6 @@ function search(e) {
     listRef.innerHTML = '';
     page = 1;
     makeRequest();
-     console.log(hasEL);
     if (!hasEventListener) {
         window.addEventListener('scroll', debounce(loadMorePgs, 500));
     }
